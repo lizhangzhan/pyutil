@@ -48,7 +48,7 @@ class PrettyTable(object):
         pw = self.padding_width
         for i in xrange(len(row)):
             if type(row[i]) is str:
-                fmt_row.append(row[i].ljust(col_widths[i] - pw) + ' ' * pw)
+                fmt_row.append(' ' * pw + row[i].ljust(col_widths[i] - pw))
             else:
                 fmt_row.append(str(row[i]).rjust(col_widths[i] - pw) + ' ' * pw)
         return self.vchar + self.vchar.join(fmt_row) + self.vchar
@@ -58,8 +58,7 @@ class PrettyTable(object):
         pw = self.padding_width
         for i in xrange(len(self.headers)):
             if type(self.data[0][i]) is str:
-                fmt_header.append(self.headers[i].ljust(col_widths[i] - pw)
-                        + ' ' * pw)
+                fmt_header.append(' ' * pw + self.headers[i].ljust(col_widths[i] - pw))
             else:
                 fmt_header.append(self.headers[i].rjust(col_widths[i] - pw)
                         + ' ' * pw)
